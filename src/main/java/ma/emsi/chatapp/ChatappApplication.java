@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDateTime;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"ma.emsi.chatapp", "ma.emsi.chatapp"})
 public class ChatappApplication {
 
     public static void main(String[] args) {
@@ -21,7 +21,6 @@ public class ChatappApplication {
     @Bean
     CommandLineRunner seed(UserRepository userRepository, MessageRepository messageRepository) {
         return args -> {
-            // Create a default user if not exists
             User user = userRepository.findByUsername("ahmed")
                     .orElseGet(() -> userRepository.save(
                             User.builder()
@@ -31,7 +30,6 @@ public class ChatappApplication {
                                     .build()
                     ));
 
-            // Insert one message example (only if table empty)
             if (messageRepository.count() == 0) {
                 Message m = Message.builder()
                         .sender(user)
