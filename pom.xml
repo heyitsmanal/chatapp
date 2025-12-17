@@ -9,10 +9,17 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ma.emsi</groupId>
+<<<<<<< HEAD
     <artifactId>chatapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>chatapp</name>
     <description>chatapp</description>
+=======
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
+    <description>demo</description>
+>>>>>>> 03aa6c0de2b57251e40e22dace211fc06c9552b6
     <url/>
     <licenses>
         <license/>
