@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ChatMessage {
 
+    private Long id;               // DB id after save (optional)
     private MessageType type;      // CHAT / JOIN / LEAVE
     private String sender;         // username
     private String content;        // text message

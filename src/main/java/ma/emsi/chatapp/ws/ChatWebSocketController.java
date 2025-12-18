@@ -1,6 +1,7 @@
 package ma.emsi.chatapp.ws;
 
-
+import ma.emsi.chatapp.entity.Message;
+import ma.emsi.chatapp.service.MessageService;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -12,13 +13,25 @@ import java.time.LocalDateTime;
 @Controller
 public class ChatWebSocketController {
 
+    private final MessageService messageService;
+
+    public ChatWebSocketController(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
     @MessageMapping("/chat.send")
     @SendTo("/topic/public")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+        // force type + timestamp
+        chatMessage.setType(MessageType.CHAT);
         if (chatMessage.getTimestamp() == null) {
             chatMessage.setTimestamp(LocalDateTime.now());
         }
-        chatMessage.setType(MessageType.CHAT);
+
+        // Save in DB
+        Message saved = messageService.saveFromWebSocket(chatMessage);
+        chatMessage.setId(saved.getId());
+
         return chatMessage;
     }
 
@@ -27,7 +40,6 @@ public class ChatWebSocketController {
     public ChatMessage addUser(@Payload ChatMessage chatMessage,
                                SimpMessageHeaderAccessor headerAccessor) {
 
-        // Store username in WebSocket session
         if (headerAccessor.getSessionAttributes() != null) {
             headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
         }
@@ -40,4 +52,3 @@ public class ChatWebSocketController {
         return chatMessage;
     }
 }
-
