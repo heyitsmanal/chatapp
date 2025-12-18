@@ -1,0 +1,50 @@
+.chat-body {
+    height: calc(100vh - 240px);
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 0.5rem;
+}
+
+.msg {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+    margin-bottom: 0.5rem;
+    max-width: 85%;
+    word-break: break-word;
+}
+
+.msg.system {
+    background: #f1f3f5;
+    color: #495057;
+    max-width: 100%;
+}
+
+.msg.me {
+    background: #dbeafe;
+    margin-left: auto;
+}
+
+.msg.other {
+    background: #f8f9fa;
+}
+
+.msg .meta {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.msg audio {
+    width: 100%;
+    margin-top: 0.25rem;
+}
+
+#usersList li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badge-online {
+    font-size: 0.75rem;
+}
