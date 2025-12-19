@@ -1,6 +1,5 @@
 package ma.emsi.chatapp.controller;
 
-
 import ma.emsi.chatapp.dto.MessageDto;
 import ma.emsi.chatapp.service.MessageService;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,5 @@
 package ma.emsi.chatapp.controller;
 
-
 import ma.emsi.chatapp.dto.AudioUploadResponse;
 import ma.emsi.chatapp.service.AudioService;
 import lombok.RequiredArgsConstructor;
@@ -22,4 +21,3 @@ public class AudioController {
         return ResponseEntity.ok(new AudioUploadResponse(audioPath));
     }
 }
-

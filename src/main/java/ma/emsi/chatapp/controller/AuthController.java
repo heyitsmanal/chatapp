@@ -2,8 +2,8 @@ package ma.emsi.chatapp.controller;
 
 import ma.emsi.chatapp.dto.AuthResponse;
 import ma.emsi.chatapp.dto.LoginRequest;
-import ma.emsi.chatapp.dto.LogoutRequest;
 import ma.emsi.chatapp.dto.RegisterRequest;
+import ma.emsi.chatapp.dto.LogoutRequest;
 import ma.emsi.chatapp.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,8 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<AuthResponse> logout(@RequestBody LogoutRequest request) {
-        return ResponseEntity.ok(authService.logout(request));
+    public ResponseEntity<Void> logout(@RequestBody LogoutRequest request) {
+        authService.logout(request);
+        return ResponseEntity.ok().build();
     }
 }
